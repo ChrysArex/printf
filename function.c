@@ -50,8 +50,9 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					c = va_arg(pa, char *);
-					n += strl(c) - 1;
-					printf("%s", c);
+					n += strl(c);
+					for (; *c != '\0'; c++)
+						putchar(*c);
 					break;
 			}
 		}
