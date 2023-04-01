@@ -9,14 +9,6 @@
  */
 int main(void)
 {
-    int len;
-    int len2;
-	char c = 'a';
-	char *s = "sion";
-
-    len = _printf("Let's try to printf a simple sentence.\n");
-    len2 = printf("Let's try to printf a simple sentence.\n");
-	printf("%d, %d\n", len, len2);
-	printf("%d\n", _printf("voici m%c ver%s\n", c, s));
-	return (0);
+    _printf("%b\n", 98);
+    return (0);
 }

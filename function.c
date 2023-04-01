@@ -1,20 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
-
-/**
- *strl - length
- * Description: count the number of character in a srting
- * @s: pointer to the string
- * Return: length of the string
- */
-int strl(char *s)
-{
-	int n = 0;
-
-	for (; *s != '\0'; s++)
-		n++;
-	return (n);
-}
+#include "main.h"
 
 /**
  * _printf - print the arguments
@@ -25,8 +11,8 @@ int strl(char *s)
  */
 int _printf(const char *format, ...)
 {
-	int n = 0;
-	int i;
+	int i, n = 0;
+  	unsigned int i2;
 	char *c;
 	va_list pa;
 
@@ -35,7 +21,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			printf("%c", *format);
+			putchar(*format);
 			n++;
 		}
 		else
@@ -54,6 +40,21 @@ int _printf(const char *format, ...)
 					for (; *c != '\0'; c++)
 						putchar(*c);
 					break;
+				case 'd':
+					i = va_arg(pa, int);
+					decimal(&i, &n);
+					break;
+				case 'i':
+					i2 = va_arg(pa, unsigned int);
+					integer(&i2, &n);
+					break;
+				case 'b':
+					binary(va_arg(pa, unsigned int ));
+					break;
+				default:
+					format--;
+					putchar('%');
+					n++;
 			}
 		}
 	}
