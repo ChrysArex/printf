@@ -73,8 +73,8 @@ int decimal(va_list *v)
 int integer(va_list *v)
 {
 	int n = 0;
-	int i2 = va_arg(*v, int);
-	int div2 = 1, rest2 = 0;
+	unsigned int i2 = va_arg(*v, unsigned int);
+	unsigned int div2 = 1, rest2 = 0;
 
 	while (rest2 != i2)
 	{
@@ -94,28 +94,6 @@ int integer(va_list *v)
 }
 /***********************************************************************/
 /**
- * binary - print the binary counterpart of an unsigned integer
- * @v: a va_list pointer
- * Return: number of character printed
- */
-/*int binary(va_list *v)
-{
-	unsigned int d = va_arg(*v, unsigned int);
-	unsigned int mult_ten = 1;
-	unsigned int rest, total;
-	int a;
-
-	while (d != 0)
-	{
-		rest = d % 2;
-		d /=  2;
-		total += mult_ten * rest;
-		mult_ten *= 10;
-	}
-	integer(&total, &a);
-}*/
-/***********************************************************************/
-/**
  * handler - apply the right function to print a certain format
  * @c: the selected format
  * @ppa: pointer to the arguments
@@ -125,9 +103,9 @@ int handler(char c, va_list *ppa)
 {
 	int i, n;
 
-	id_func f_conv[5] = {
-		{'c', character}, {'s', string}, {'d', decimal}, {'i', decimal},
-		{'%', character}
+	id_func f_conv[6] = {
+		{'c', character}, {'s', string}, {'d', decimal}, {'i', integer},
+		{'%', character}, {'b', binary}
 	};
 	for (i = 0; i <= 5; i++)
 	{
