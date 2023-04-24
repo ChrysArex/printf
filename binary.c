@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdarg.h>
 /**
  * binary - print the binary counterpart of an unsigned integer
  * @v: a va_list pointer

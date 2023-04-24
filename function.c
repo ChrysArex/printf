@@ -23,7 +23,13 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			n += handler(*format, &pa);
+			if (*format == '%')
+			{
+				_putchar('%');
+				n++;
+			}
+			else
+				n += handler(*format, &pa);
 		}
 	}
 	va_end(pa);

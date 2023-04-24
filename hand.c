@@ -12,8 +12,7 @@ int character(va_list *v)
 	int i = va_arg(*v, int);
 
 	_putchar(i);
-	n++;
-	return (n);
+	return (++n);
 }
 /*******************************************************************/
 /**
@@ -107,7 +106,7 @@ int handler(char c, va_list *ppa)
 		{'c', character}, {'s', string}, {'d', decimal}, {'i', integer},
 		{'%', character}, {'b', binary}
 	};
-	for (i = 0; i <= 5; i++)
+	for (i = 0; i <= 6; i++)
 	{
 		if (f_conv[i].id == c)
 		{
